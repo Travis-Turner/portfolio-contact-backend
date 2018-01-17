@@ -23,14 +23,22 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
+  let formattedHTML = '';
   let name = req.body.name;
   let email = req.body.email;
-  let phone = req.body.phone;
   let message = req.body.message;
 
-  let formattedHTML = '<h1>FROM: ' + name + '</h1>';
+  formattedHTML = '<h1>FROM: ' + name + '</h1>';
+  //handle optional fields
+  if (req.body.phone){
+    let phone = req.body.phone;
+    formattedHTML += '<h3>PHONE: ' + phone + '</h3>';
+  }
+  if (req.body.website){
+    let website = req.body.website;
+    formattedHTML += '<h3>WEBSITE: ' + website + '</h3>';
+  }
   formattedHTML += '<h3>EMAIL: ' + email + '</h3>';
-  formattedHTML += '<h3>PHONE: ' + phone + '</h3>';
   formattedHTML += '<p>MESSAGE: ' + message + '</p>';
 
   const mailOptions = {
