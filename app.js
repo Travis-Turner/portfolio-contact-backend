@@ -50,15 +50,15 @@ app.post('/', (req, res) => {
   };
 
   transporter.sendMail(mailOptions, function (err, info) {
-   if(err)
-     console.log(err)
-     res.send('Error!');
-   else
-     console.log(info);
-     backURL=req.header('Referer') || '/';
-     res.redirect(backURL);
+     if(err) {
+      res.send('Error!');
+     }
+     else {
+       console.log(info);
+       backURL=req.header('Referer') || '/';
+       res.redirect(backURL);
+     }
    });
-   res.send('test');
 });
 
 app.listen(port, () => {
