@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 
 var app = express();
 
@@ -16,16 +17,15 @@ const transporter = nodemailer.createTransport({
 
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+app.options('*', cors());
 
 app.get('/', (req, res) => {
   res.send('Welcome.');
 });
 
 app.post('/', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
   let formattedHTML = '';
   let name = req.body.name;
   let email = req.body.email;
