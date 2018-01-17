@@ -18,8 +18,6 @@ const transporter = nodemailer.createTransport({
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors({credentials: true}));
-
 
 app.get('/', (req, res) => {
   res.send('Welcome.');
@@ -57,7 +55,8 @@ app.post('/', (req, res) => {
    else
      console.log(info);
    });
-   res.send('hi');
+   backURL=req.header('Referer') || '/';
+   res.redirect(backURL);
 });
 
 app.listen(port, () => {
