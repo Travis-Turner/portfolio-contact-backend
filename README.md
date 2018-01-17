@@ -1,6 +1,13 @@
 # FORM E-MAIL FORWARD-ER
 
-This is a small express app. 
+This is a small express app. You'll point an HTML form to the root POST route, set up the 4 appropriate 
+environment variables, and it's good to go.
+
+## Motivation
+
+This was created as my easy solution get forms sent to my email.
+
+### More details
 
 The root POST route will recieve a request from an HTML form.  It will parse the contents of the request
 into very basic HTML formatting, then forward that request on to the specified email.
