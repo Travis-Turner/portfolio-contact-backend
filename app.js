@@ -58,7 +58,7 @@ app.post('/', (req, res) => {
      backURL=req.header('Referer') || '/';
      res.redirect(backURL);
    });
-
+   res.send('test');
 });
 
 app.listen(port, () => {
