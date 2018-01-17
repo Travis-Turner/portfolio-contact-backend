@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  console.log(req.body);
+  res.send(req.body);
 });
 
 app.listen(port, () => {
