@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
+  if (!req.body.name){
+    res.send('Fantastic error.');
+  }
   let formattedHTML = '';
   let name = req.body.name;
   let email = req.body.email;
