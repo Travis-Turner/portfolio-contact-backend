@@ -34,8 +34,8 @@ app.post('/', (req, res) => {
   formattedHTML += '<p>MESSAGE: ' + message + '</p>';
 
   const mailOptions = {
-    from: 'travisturner00000@gmail.com',
-    to: 'travis@travisturner.io',
+    from: process.env.FROM_EMAIL,
+    to: process.env.TO_EMAIL,
     subject: 'TRAVIS CONTACT FORM SUBMISSION',
     html: formattedHTML
   };
