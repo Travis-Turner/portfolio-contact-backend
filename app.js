@@ -18,14 +18,14 @@ const transporter = nodemailer.createTransport({
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
-app.options('/', cors());
+app.use(cors({credentials: true}));
+
 
 app.get('/', (req, res) => {
   res.send('Welcome.');
 });
 
-app.post('/', cors(), (req, res) => {
+app.post('/', (req, res) => {
   let formattedHTML = '';
   let name = req.body.name;
   let email = req.body.email;
