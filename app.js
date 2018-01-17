@@ -52,11 +52,13 @@ app.post('/', (req, res) => {
   transporter.sendMail(mailOptions, function (err, info) {
    if(err)
      console.log(err)
+     res.send('Error!');
    else
      console.log(info);
+     backURL=req.header('Referer') || '/';
+     res.redirect(backURL);
    });
-   backURL=req.header('Referer') || '/';
-   res.redirect(backURL);
+
 });
 
 app.listen(port, () => {
